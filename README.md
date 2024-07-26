@@ -6,8 +6,13 @@
 
 コントラクトフォルダに移動  
 `cd contruct`  
+パッケージのインストール  
+`npm install`  
 ローカルノードの起動  
 `npx hardhat node`  
+別ターミナルを起動する  
+コントラクトフォルダに移動  
+`cd contruct`  
 ノードにスマートコントラクトをデプロイ  
 `npx hardhat ignition deploy ./ignition/modules/RealEstateFund.js`  
 
@@ -16,6 +21,8 @@
 
 フロントフォルダに移動  
 `cd smart-reit-fund`  
+パッケージのインストール  
+`npm install`  
 サーバー起動  
 `npm start`  
 
