@@ -13,7 +13,7 @@ function Layout({ children }) {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/invest">Invest</Link></li>
             <li><Link to="/portfolio">Portfolio</Link></li>
-            <li><Link to="/dividend">Dividend</Link></li>
+            <li><Link to="/progress">Progress</Link></li>
           </ul>
         </nav>
       </header>

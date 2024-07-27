@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { WalletContext } from './WalletContext';
 import { ethers } from 'ethers';
+import RealEstateFundABI from './RealEstateFundABI.json'; // コントラクトのABIをインポート
 import './Invest.css';
 
 function Invest() {
@@ -9,7 +10,7 @@ function Invest() {
   const [amount, setAmount] = useState('');
   const [message, setMessage] = useState('');
 
-  const sendEther = async () => {
+  const investInFund = async () => {
     if (!userAddress || !contractAddress || !amount) {
       setMessage("Please fill in all fields");
       return;
@@ -18,13 +19,15 @@ function Invest() {
       const provider = new ethers.BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
       const amountInEther = ethers.parseEther(amount);
-      const tx = await signer.sendTransaction({
-        to: contractAddress,
-        value: amountInEther,
-      });
+
+      // コントラクトのインスタンスを作成
+      const contract = new ethers.Contract(contractAddress, RealEstateFundABI, signer);
+
+      // invest関数を呼び出す
+      const tx = await contract.invest({ value: amountInEther });
       setMessage(`Transaction sent! Hash: ${tx.hash}`);
       await tx.wait();
-      setMessage("Transaction confirmed!");
+      setMessage("Investment confirmed!");
     } catch (error) {
       console.error("Transaction failed", error);
       setMessage("Transaction failed: " + error.message);
@@ -52,7 +55,7 @@ function Invest() {
           onChange={(e) => setAmount(e.target.value)}
         />
       </div>
-      <button onClick={sendEther}>Send Ether</button>
+      <button onClick={investInFund}>Invest in Fund</button>
       {message && <p>{message}</p>}
     </div>
   );

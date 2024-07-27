@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract RealEstateFund {
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
+contract RealEstateFund is ERC20 {
     address public owner;
     uint256 public totalInvested;
     mapping(address => uint256) public investments;
@@ -12,7 +14,7 @@ contract RealEstateFund {
     event ProfitsDistributed(uint256 totalAmount, uint256 totalInvested);
 
     // コンストラクタ
-    constructor() {
+    constructor(string memory name, string memory symbol) ERC20(name, symbol) {
         owner = msg.sender;
     }
 
@@ -26,6 +28,10 @@ contract RealEstateFund {
 
         investments[msg.sender] += msg.value;
         totalInvested += msg.value;
+
+        // 投資額に応じてトークンを発行
+        uint256 tokensToMint = msg.value;
+        _mint(msg.sender, tokensToMint);
 
         emit Invested(msg.sender, msg.value);
     }

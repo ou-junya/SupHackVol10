@@ -5,7 +5,7 @@ import Layout from './Layout'; // レイアウトコンポーネントのイン�
 import Home from './Home';
 import Invest from './Invest';
 import Portfolio from './Portfolio';
-import Dividend from './Dividend';
+import Progress from './Progress';
 import './App.css';
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/invest" element={<Invest />} />
             <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/dividend" element={<Dividend />} />
+            <Route path="/progress" element={<Progress />} />
           </Routes>
         </Layout>
       </Router>
