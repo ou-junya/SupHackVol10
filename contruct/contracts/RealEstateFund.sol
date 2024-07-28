@@ -29,8 +29,8 @@ contract RealEstateFund is ERC20 {
         investments[msg.sender] += msg.value;
         totalInvested += msg.value;
 
-        // 投資額に応じてトークンを発行
-        uint256 tokensToMint = msg.value;
+        // 投資額に応じてトークンを発行（デシマルを考慮）
+        uint256 tokensToMint = msg.value * (10 ** uint256(decimals()));
         _mint(msg.sender, tokensToMint);
 
         emit Invested(msg.sender, msg.value);
