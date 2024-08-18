@@ -14,7 +14,7 @@
 コントラクトフォルダに移動  
 `cd contruct`  
 ノードにスマートコントラクトをデプロイ  
-`npx hardhat ignition deploy ./ignition/modules/RealEstateFund.js`  
+`npx hardhat ignition deploy ./ignition/modules/SecurityToken.js --network localhost`
 
 親フォルダに移動  
 `cd ../`  
