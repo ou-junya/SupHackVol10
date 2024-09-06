@@ -3,7 +3,7 @@ import { WalletContext } from './WalletContext';
 import { ethers } from 'ethers';
 import './Invest.css';
 
-function Invest() {
+function Distribute() {
   const { userAddress, isConnected, connectWallet } = useContext(WalletContext);
   const [contractAddress, setContractAddress] = useState('');
   const [amount, setAmount] = useState('');
@@ -11,7 +11,7 @@ function Invest() {
 
   const sendEtherToContract = async () => {
     if (!userAddress || !contractAddress || !amount) {
-      setMessage("Please fill in all fields");
+      setMessage("すべての項目を入力してください");
       return;
     }
     try {
@@ -22,27 +22,39 @@ function Invest() {
         to: contractAddress,
         value: amountInEther
       });
-      // 直接指定したアドレスにETHを送金する
       const tx = await signer.sendTransaction({
         to: contractAddress,
         value: amountInEther,
         gasLimit: gasEstimate
       });
-      
-      setMessage(`Transaction sent! Hash: ${tx.hash}`);
+
+      setMessage(`取引が送信されました！トランザクションハッシュ: ${tx.hash}`);
       await tx.wait();
-      setMessage("Transaction confirmed!");
+      setMessage("取引が確認されました！");
     } catch (error) {
-      console.error("Transaction failed", error);
-      setMessage("Transaction failed: " + error.message);
+      console.error("取引に失敗しました", error);
+      setMessage("取引に失敗しました: " + error.message);
     }
   };
 
   return (
     <div className="invest-container">
-      <p className="subtitle">ブロックチェーン技術によるスマートな不動産投資プラットフォーム<br/>ファンド運営者はこちらから配当金の支払いが可能。</p>
-      <button onClick={connectWallet}>Connect Wallet</button>
-      {isConnected && <p>Connected with: {userAddress}</p>}
+      <h1 className="page-title">Smart REIT Fund 配当分配</h1>
+      <p className="subtitle">
+        ファンド運営者向けの配当分配ページです。<br />
+        こちらからETHを配当として送金し、保有者に自動的に分配されます。
+      </p>
+      <div className="steps">
+        <h2>配当分配の流れ</h2>
+        <ol>
+          <li>MetaMaskを使ってウォレットを接続します。</li>
+          <li>コントラクトアドレスと分配したいETHの金額を入力します。</li>
+          <li>「配当を送信」ボタンを押して配当を実行します。</li>
+        </ol>
+      </div>
+      <button className="cta-button" onClick={connectWallet}>
+        {isConnected ? `接続したウォレットのアドレス: ${userAddress}` : "ウォレットを接続"}
+      </button>
       <div>
         <input
           type="text"
@@ -54,15 +66,15 @@ function Invest() {
       <div>
         <input
           type="text"
-          placeholder="分配したい配当金の合計"
+          placeholder="分配したいETHの金額"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />
       </div>
-      <button onClick={sendEtherToContract}>Send Ether</button>
+      <button onClick={sendEtherToContract}>配当を送信</button>
       {message && <p>{message}</p>}
     </div>
   );
 }
 
-export default Invest;
+export default Distribute;

@@ -43,7 +43,7 @@ function Home() {
         <h2>今すぐ始めましょう</h2>
         <p>未来の不動産投資を今すぐ体験しましょう。簡単なウォレット接続で始められます。</p>
         <button className="cta-button" onClick={handleConnectWallet}>
-          {isConnected ? `Connected: ${userAddress}` : "ウォレットを接続"}
+          {isConnected ? `接続したウォレットのアドレス: ${userAddress}` : "ウォレットを接続"}
         </button>
       </section>
     </div>
