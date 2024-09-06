@@ -13,7 +13,7 @@ contract RealEstateToken is ERC20 {
         platformManager = msg.sender; // コントラクトを作成したアカウントがプラットフォームマネージャーになるように設定する
     }
 
-    function deposit() external payable {
+    receive() external payable {
         if (msg.sender == platformManager) {
             distributeDividends(); // プラットフォームマネージャーからのETH入金で配当を分配
         } else {
