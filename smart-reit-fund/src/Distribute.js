@@ -40,7 +40,7 @@ function Invest() {
 
   return (
     <div className="invest-container">
-      <p className="subtitle">ブロックチェーン技術によるスマートな不動産投資プラットフォーム<br/>RIETへの投資はこちらから。<br/>投資したETHと同量のRETトークンが返却されます。<br/>RETトークンの保有量に基づき配当が配布されます。</p>
+      <p className="subtitle">ブロックチェーン技術によるスマートな不動産投資プラットフォーム<br/>ファンド運営者はこちらから配当金の支払いが可能。</p>
       <button onClick={connectWallet}>Connect Wallet</button>
       {isConnected && <p>Connected with: {userAddress}</p>}
       <div>
@@ -54,7 +54,7 @@ function Invest() {
       <div>
         <input
           type="text"
-          placeholder="投資したいETHの金額"
+          placeholder="分配したい配当金の合計"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />

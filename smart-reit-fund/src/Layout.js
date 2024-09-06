@@ -11,9 +11,10 @@ function Layout({ children }) {
         <nav className="nav-menu">
           <ul>
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/invest">Invest</Link></li>
-            <li><Link to="/portfolio">Portfolio</Link></li>
-            <li><Link to="/progress">Progress</Link></li>
+            <li><Link to="/invest">投資</Link></li>
+            <li><Link to="/distribute">配当支払い</Link></li>
+            <li><Link to="/portfolio">ポートフォリオ</Link></li>
+            <li><Link to="/progress">投資総額</Link></li>
           </ul>
         </nav>
       </header>

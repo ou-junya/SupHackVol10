@@ -6,6 +6,7 @@ import Home from './Home';
 import Invest from './Invest';
 import Portfolio from './Portfolio';
 import Progress from './Progress';
+import Distribute from './Distribute';
 import './App.css';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/invest" element={<Invest />} />
+            <Route path="/distribute" element={<Distribute />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/progress" element={<Progress />} />
           </Routes>
