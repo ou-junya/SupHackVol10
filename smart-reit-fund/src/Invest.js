@@ -52,7 +52,7 @@ function Invest() {
         <ol>
           <li>MetaMaskを使ってウォレットを接続します。</li>
           <li>コントラクトアドレスと投資するETHの金額を入力します。</li>
-          <li>「Send Ether」ボタンを押して投資を実行します。</li>
+          <li>「REITに投資する」ボタンを押して投資を実行します。</li>
         </ol>
       </div>
       <button className="cta-button" onClick={connectWallet}>
