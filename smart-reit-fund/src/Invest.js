@@ -40,9 +40,24 @@ function Invest() {
 
   return (
     <div className="invest-container">
-      <p className="subtitle">ブロックチェーン技術によるスマートな不動産投資プラットフォーム<br/>RIETへの投資はこちらから。<br/>投資したETHと同量のRETトークンが返却されます。<br/>RETトークンの保有量に基づき配当が配布されます。</p>
-      <button onClick={connectWallet}>Connect Wallet</button>
-      {isConnected && <p>Connected with: {userAddress}</p>}
+      <h1 className="page-title">Smart REIT Fund</h1>
+      <p className="subtitle">ブロックチェーン技術によるスマートな不動産投資プラットフォーム</p>
+      <p className="description">
+        ブロックチェーン技術を使った不動産投資プラットフォームへようこそ！<br/>
+        このページでは、ETHを投資することで同量のRETトークンが返却されます。<br/>
+        RETトークンの保有量に基づいて、配当が定期的に配布されます。
+      </p>
+      <div className="steps">
+        <h2>投資の流れ</h2>
+        <ol>
+          <li>MetaMaskを使ってウォレットを接続します。</li>
+          <li>コントラクトアドレスと投資するETHの金額を入力します。</li>
+          <li>「Send Ether」ボタンを押して投資を実行します。</li>
+        </ol>
+      </div>
+      <button className="cta-button" onClick={connectWallet}>
+          {isConnected ? `接続したウォレットのアドレス: ${userAddress}` : "ウォレットを接続"}
+        </button>
       <div>
         <input
           type="text"
@@ -59,7 +74,7 @@ function Invest() {
           onChange={(e) => setAmount(e.target.value)}
         />
       </div>
-      <button onClick={sendEtherToContract}>Send Ether</button>
+      <button onClick={sendEtherToContract}>REITに投資する</button>
       {message && <p>{message}</p>}
     </div>
   );

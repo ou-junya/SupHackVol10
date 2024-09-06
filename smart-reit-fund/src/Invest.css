@@ -56,3 +56,49 @@
     font-size: 1em;
     color: #333;
   }
+
+  .steps {
+    text-align: left;
+    margin-bottom: 30px;
+  }
+  
+  .steps h2 {
+    font-size: 1.4em;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .steps ol {
+    list-style: none;
+    padding-left: 0;
+    counter-reset: step-counter;
+  }
+  
+  .steps ol li {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 40px; /* 左側に余白を追加 */
+    color: #444;
+    line-height: 1.6;
+    counter-increment: step-counter;
+  }
+  
+  .steps ol li:before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    background-color: #f59e0b; /* 番号の背景色 */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    line-height: 1;
+  }
+  
